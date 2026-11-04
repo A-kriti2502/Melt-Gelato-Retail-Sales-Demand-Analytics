@@ -1,103 +1,272 @@
-Data-Driven Sales Demand Analysis for Inventory Planning and Operational Efficiency
+<div align="center">
 
-Project Overview
+# 🍨 Melt Gelato | Retail Sales & Demand Analytics
 
-This project analyses historical point-of-sale data from Melt Gelato, a retail gelato and café business in Navan, Ireland.
+### Data-Driven Inventory Planning and Operational Efficiency
 
-The objective was to understand sales demand patterns, identify important products, evaluate forecasting methods, and develop data-driven recommendations for inventory planning and operational efficiency.
+**Python · Machine Learning · Statistical Analysis · Power BI**
 
-The project was completed as part of the IIT Madras Business Data Management Capstone.
+An end-to-end retail analytics project transforming historical point-of-sale data into actionable insights for demand forecasting, product prioritisation, and operational planning.
 
-Objectives
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=flat-square&logo=pandas&logoColor=white)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-Machine%20Learning-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-Visualisation-F2C811?style=flat-square&logo=powerbi&logoColor=black)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebooks-F37626?style=flat-square&logo=jupyter&logoColor=white)
 
-* Analyse historical sales trends and customer demand patterns.
-* Examine relationships between weather conditions and daily sales.
-* Develop and compare daily revenue forecasting models.
-* Identify high-revenue products using ABC classification.
-* Explore frequently purchased product combinations.
-* Evaluate demand variability across product categories.
-* Translate analytical findings into practical business recommendations.
+</div>
 
-Tools and Technologies
+---
 
-Programming: Python
+## 📌 Project Overview
 
-Libraries: Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn
+Retail businesses often face challenges in predicting customer demand, maintaining product availability, and managing operational resources efficiently.
 
-Business Intelligence: Power BI
+This project analyses historical point-of-sale transactions from **Melt Gelato**, a gelato and café business in Navan, Ireland.
 
-Methods: Exploratory Data Analysis, Correlation Analysis, Ridge Regression, Time-Series Forecasting, ABC Classification, Market Basket Analysis
+The analysis combines exploratory data analysis, statistical methods, machine learning, and product-level analytics to identify demand patterns and develop practical recommendations for inventory and operational planning.
 
-Project Structure
+**Academic Context:** Business Data Management Capstone — IIT Madras
 
-The analysis is organised into seven Jupyter notebooks:
+### 🎯 Project Objectives
 
-Notebook	Description
-01 - Data Understanding	Examines the dataset structure, completeness and initial data quality.
-02 - Data Cleaning	Prepares sales records and handles payment, refund and void transactions.
-03 - Exploratory Data Analysis	Investigates sales patterns across dates, hours, weekdays and product categories.
-04 - Weather and Sales Analysis	Examines relationships between historical weather conditions and daily revenue.
-05 - Sales Forecasting	Compares forecasting models using chronological training and testing data.
-06 - Product and Inventory Analysis	Performs product rankings, ABC classification, market basket analysis and category demand variability analysis.
-07 - Business Recommendations	Converts analytical findings into practical operational recommendations.
+- Identify seasonal, weekly, and hourly sales patterns.
+- Examine relationships between weather conditions and revenue.
+- Develop and evaluate daily revenue forecasting models.
+- Identify high-revenue products using ABC classification.
+- Explore frequently purchased product combinations.
+- Measure demand variability across product categories.
+- Translate analytical findings into operational recommendations.
 
-Key Findings
+---
 
-Sales Forecasting
+## 🔄 Analytics Workflow
 
-Three forecasting approaches were evaluated:
+```text
+              Historical POS Data
+                       │
+                       ▼
+              Data Understanding
+                       │
+                       ▼
+            Cleaning & Validation
+                       │
+                       ▼
+          Exploratory Data Analysis
+                       │
+              ┌────────┴────────┐
+              ▼                 ▼
+       Weather Analysis    Product Analysis
+              │                 │
+              ▼                 ▼
+       Sales Forecasting   ABC Classification
+              │                 │
+              │            Market Basket
+              │              Analysis
+              └────────┬────────┘
+                       ▼
+             Business Recommendations
+                       │
+                       ▼
+             Operational Decision Support
+```
 
-Model	WAPE
-Calendar Ridge Regression	12.74%
-Calendar + Observed Weather Ridge	15.03%
-Seasonal Naïve	18.83%
+---
 
-Calendar Ridge Regression achieved the lowest forecasting error on the test period.
+## 📊 Key Findings
 
-Product Revenue Concentration
+### 1. Sales Demand Patterns
 
-ABC classification identified a concentration of revenue among a relatively small group of products.
+The exploratory analysis identified clear differences in demand across weekdays, weekends, and seasons.
 
-* Category A: 44 products contributing 80.45% of payment revenue.
-* Category B: 61 products contributing 14.58%.
-* Category C: 282 products contributing 4.97%.
+| Finding | Observation |
+|:---|:---|
+| Highest-revenue month | May 2025 |
+| Lowest-revenue month | January 2025 |
+| Weekend demand | Average daily revenue approximately 54% higher than weekdays |
+| Peak sales hour | 8 PM |
+| Leading revenue category | Gelato |
 
-Operational Insights
+**Business implication:** Historical demand patterns can support staffing decisions, product preparation, and inventory planning.
 
-The analysis identified recurring weekly demand patterns, differences in category-level revenue variability, and product combinations that may be useful for operational planning.
+### 2. Weather and Sales Relationships
 
-Business Recommendations
+Historical weather observations were combined with daily sales records to examine relationships between revenue and weather conditions.
 
-The project explored opportunities to:
+The analysis considered:
 
-* Prioritise monitoring of high-revenue products.
-* Use historical demand patterns to support staffing and inventory planning.
-* Adjust preparation levels for categories with variable demand.
-* Evaluate potential product combinations and promotional opportunities.
-* Introduce further testing before implementing forecasting models in daily operations.
+- Temperature
+- Rainfall
+- Sunshine duration
 
-Data Confidentiality
+Sunshine showed a moderate positive correlation with daily revenue (**Pearson r = 0.494**).
 
-The original point-of-sale dataset contains confidential business information and is not included in this repository.
+These findings suggest that weather may provide useful context for understanding demand, although correlation does not establish causation.
 
-Raw data, processed transaction-level files, and other sensitive business records are excluded.
+### 3. Daily Revenue Forecasting
 
-The notebooks are provided to demonstrate the analytical methodology and project workflow. They may require access to the original private datasets to execute successfully.
+Three forecasting approaches were evaluated using a chronological training and testing split.
 
-Limitations
+| Model | Test WAPE |
+|:---|---:|
+| **Calendar Ridge Regression** | **12.74%** |
+| Calendar + Observed Weather Ridge | 15.03% |
+| Seasonal Naïve (7-day lag) | 18.83% |
 
-The analysis was based primarily on historical sales data.
+**Best-performing model:** Calendar Ridge Regression
 
-Inventory quantities, product costs, wastage and staffing records were not available for directly measuring the financial impact of the recommendations.
+The results indicate that calendar-related features provided a useful basis for predicting daily revenue during the evaluation period.
 
-The forecasting results were evaluated on a historical test period and would require further validation before operational deployment.
+Including observed weather variables did not improve accuracy on the held-out test set.
 
-Author
+### 4. ABC Product Classification
 
-Aakriti Abhay Singh
+Products were ranked by revenue contribution and classified into A, B, and C groups.
 
-MSc Data & Computational Science, University College Dublin
+| Category | Number of Products | Revenue Contribution |
+|:---:|---:|---:|
+| **A** | **44** | **80.45%** |
+| B | 61 | 14.58% |
+| C | 282 | 4.97% |
+| **Total** | **387** | **100%** |
 
-B.Tech Data Science & Engineering, Manipal University Jaipur
+**Business implication:** Category A products may warrant closer inventory monitoring because they account for most payment revenue.
 
-BSc Data Science & Programming, IIT Madras
+The classification is based on revenue rather than profitability.
+
+### 5. Product Demand and Market Basket Analysis
+
+The analysis also examined:
+
+- Frequently purchased product combinations.
+- Associations between products within completed transactions.
+- Daily revenue variability across product categories.
+- Differences between relatively stable and variable demand.
+
+For example, Gelato exhibited greater relative daily revenue variability (**CV = 0.69**) than Coffee (**CV = 0.25**).
+
+These findings provide a starting point for product preparation and potential promotional decisions.
+
+---
+
+## 📁 Repository Structure
+
+```text
+Melt-Gelato-Retail-Sales-Demand-Analytics/
+│
+├── notebooks/
+│   ├── 01_Data_Understanding.ipynb
+│   ├── 02_Data_Cleaning.ipynb
+│   ├── 03_Exploratory_Data_Analysis.ipynb
+│   ├── 04_Weather_Statistical_Analysis.ipynb
+│   ├── 05_Sales_Forecasting_Interpreted.ipynb
+│   ├── 06_Product_Inventory_Analysis_Interpreted.ipynb
+│   └── 07_Business_Recommendations.ipynb
+│
+├── .gitignore
+├── requirements.txt
+└── README.md
+```
+
+### Notebook Guide
+
+| Notebook | Focus |
+|:---|:---|
+| **01 — Data Understanding** | Dataset structure, initial inspection, and data quality checks |
+| **02 — Data Cleaning** | Payment, refund, and void handling; validation |
+| **03 — Exploratory Data Analysis** | Revenue trends, peak hours, weekdays, and categories |
+| **04 — Weather & Statistical Analysis** | Weather relationships and statistical evaluation |
+| **05 — Sales Forecasting** | Baseline forecasting, Ridge Regression, and model comparison |
+| **06 — Product & Inventory Analysis** | Product rankings, ABC classification, market basket analysis, and demand variability |
+| **07 — Business Recommendations** | Evidence-based recommendations and operational decision support |
+
+---
+
+## 🛠️ Technology Stack
+
+| Area | Tools / Methods |
+|:---|:---|
+| Programming | Python |
+| Data Manipulation | Pandas, NumPy |
+| Visualisation | Matplotlib, Seaborn, Power BI |
+| Machine Learning | Scikit-learn, Ridge Regression |
+| Statistical Analysis | Pearson and Spearman correlations |
+| Forecast Evaluation | MAE, RMSE, WAPE |
+| Product Analytics | ABC Classification, Pareto Analysis |
+| Basket Analytics | Transaction-level product associations |
+| Development Environment | Jupyter Notebook |
+
+---
+
+## 💡 Business Recommendations
+
+Based on the analysis, the project identified several opportunities for operational improvement.
+
+**Inventory Prioritisation**
+
+Monitor high-revenue products more closely to reduce the risk of unexpected unavailability.
+
+**Demand-Based Preparation**
+
+Use historical weekday, seasonal, and category-level patterns to support daily product preparation.
+
+**Forecast-Assisted Planning**
+
+Use calendar-based revenue forecasts as an additional input when planning staffing and operational resources.
+
+**Product Combination Opportunities**
+
+Explore frequently purchased product combinations to identify potential promotional opportunities.
+
+**Continuous Evaluation**
+
+Validate recommendations against inventory availability, product costs, wastage, and operational constraints before implementation.
+
+---
+
+## 🔒 Data Confidentiality
+
+> **The original business dataset is not publicly available.**
+
+This project uses confidential point-of-sale information provided for academic analysis.
+
+To protect business confidentiality:
+
+- Raw transaction datasets are excluded from this repository.
+- Processed transaction-level datasets are not published.
+- Business-sensitive source files are not included.
+- The notebooks document the analytical workflow and methodology.
+
+**Note:** The notebooks require access to the original private datasets for full execution.
+
+---
+
+## ⚠️ Limitations
+
+- The analysis covers a limited historical observation period.
+- Forecasting performance was evaluated using a chronological holdout period.
+- Weather relationships are observational and do not establish causality.
+- Inventory levels, product costs, wastage, and staffing information were not available for direct financial impact assessment.
+- Recommendations require operational testing before implementation.
+
+---
+
+## 👩‍💻 About the Author
+
+**Aakriti Abhay Singh**
+
+MSc Data & Computational Science — University College Dublin  
+B.Tech Data Science & Engineering — Manipal University Jaipur  
+BSc Data Science & Programming — IIT Madras
+
+**Areas of Interest:** Data Analytics · Machine Learning · Business Intelligence · Applied Data Science
+
+---
+
+<div align="center">
+
+### 🍨 Turning Retail Data into Better Business Decisions
+
+*Business Data Management Capstone Project | IIT Madras*
+
+</div>

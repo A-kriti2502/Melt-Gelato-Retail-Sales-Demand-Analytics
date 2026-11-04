@@ -1,0 +1,37 @@
+# Confidential business data
+data/*
+!data/.gitkeep
+
+# CSV and Excel files
+*.csv
+*.xlsx
+*.xls
+*.parquet
+*.feather
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Environment variables and credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
